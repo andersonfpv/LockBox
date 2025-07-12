@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($validacao->naoPassou()) {
 
-        header("Location: /login");
+        view('login');
 
         exit();
 
