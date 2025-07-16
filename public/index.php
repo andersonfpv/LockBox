@@ -15,4 +15,4 @@ session_start();
 
 // $config = require '../config.php';
 
-require '../routes.php';
+require base_path('/config/routes.php');

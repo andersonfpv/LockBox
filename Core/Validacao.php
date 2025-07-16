@@ -16,12 +16,13 @@ class Validacao {
             foreach($regrasDoCampo as $regra) {
 
                 $valorDoCampo = $dados[$campo];
+                
 
                 if ($regra == 'confirmed') {
 
                     $validacao->$regra($campo, $valorDoCampo, $dados["{$campo}_confirmacao"]);
                         
-                } else if (str_contains($regra, ':')) {
+                } elseif (str_contains($regra, ':')) {
 
                     $temp = explode(':', $regra);
 

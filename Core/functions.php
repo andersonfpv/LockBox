@@ -2,7 +2,7 @@
 
 
 function base_path($path){
-    return __DIR__ . '/../. $path';
+    return __DIR__ . '/../'. $path;
 }
 
 function redirect($uri){
@@ -49,7 +49,7 @@ function flash() {
 
 function config($chave = null) {
 
-    $config = require base_path('config.php');
+    $config = require base_path('/config/config.php');
 
     if (strlen($chave) > 0) {
 

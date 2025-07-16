@@ -16,8 +16,8 @@ use App\Controllers\RegisterController;
 
 ->get('/', IndexController::class)
 
-->get('/login', [LoginController::class], 'index')
-->post('/login', [LoginController::class], 'index')
+->get('/login', [LoginController::class, 'index'])
+->post('/login', [LoginController::class, 'login'])
 
 ->get('/dashboard', DashboardController::class)
 
@@ -27,3 +27,7 @@ use App\Controllers\RegisterController;
 ->post('/registrar', [RegisterController::class, 'register'])
 
 ->run();
+
+// $password = '12345678*';
+// $hash = password_hash($password, PASSWORD_BCRYPT);
+// echo $hash;
