@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-class IndexController {
+class LogoutController {
     public function __invoke()
     {
-        view('index');
+        echo "logoutcontroller.__invoke";
     }
 }

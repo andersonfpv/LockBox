@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-class IndexController {
+class DashboardController {
     public function __invoke()
     {
-        view('index');
+        echo "dashboardcontroller.__invoke";
     }
 }

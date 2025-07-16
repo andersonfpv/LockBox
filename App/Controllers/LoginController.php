@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class LoginController {
     public function index(){
-        echo "logincontroller.index";
+        return view('login');
     }
 
 
