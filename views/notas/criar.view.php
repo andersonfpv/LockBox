@@ -8,7 +8,7 @@
         <li><a>👁️</a></li>
         <li>
           <details>
-            <summary><?= $user->nome ?></summary>
+            <summary><?= auth()->nome ?></summary>
             <ul class="bg-base-100 rounded-t-none p-2">
               <li><a href="/logout">Logout</a></li>
             </ul>
@@ -42,8 +42,8 @@
     <div class="bg-base-300 rounded-l-box w-56">
 
     </div>
-    <div class="bg-base-200 rounded-r-box w-full p-10 flex flex-col space-y-6">
-      <!-- <form action="" method="get"> -->
+    <div class="bg-base-200 rounded-r-box w-full p-10">
+      <form action="/notas/criar" method="post" class="flex flex-col space-y-6">
         <label class="form-control w-full">
           <div class="label">
             <span class="label-text">Título</span>
@@ -58,12 +58,11 @@
           <textarea class="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
         </label>
 
-        <div class="flex justify-between items-center">
-          <button class="btn btn-error">Deletar</button>
-          <button class="btn btn-primary">Atualizar</button>
+        <div class="flex justify-end items-center">
+          <button class="btn btn-primary">Salvar</button>
         </div>
 
-      <!-- </form> -->
+      </form>
     </div>
   </div>
 </div>
