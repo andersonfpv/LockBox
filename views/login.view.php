@@ -14,13 +14,10 @@
                 <?php
                 $validacoes = flash()->get('validacoes');
                 ?>
-                <?php
-                $success = flash()->get('mensagem');
-                ?>
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">Faça o seu login</div>
-                        <?php if ($success): ?>
+                        <?php if ($success = flash()->get('mensagem')): ?>
                             <div role="alert" class="alert shadow-lg">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
