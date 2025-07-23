@@ -1,5 +1,5 @@
       <div class="flex space-x-4">
-          <form action="/dashboard" method="post" class="w-full">
+          <form action="/notas" method="post" class="w-full">
               <label class="input input-bordered flex items-center gap-2 w-full">
                   <input type="text" class="grow" name="pesquisar" placeholder="Pesquisar notas no LockBox..." />
                   <svg
