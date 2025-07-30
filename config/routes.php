@@ -37,6 +37,7 @@ use App\Middlewares\GuestMiddleware;
 
 ->get('/notas/criar', [Notas\CriarController::class, 'index'], AuthMiddleware::class)
 ->post('/notas/criar', [Notas\CriarController::class, 'store'], AuthMiddleware::class)
+->put('/nota', Notas\AtualizarController::class, AuthMiddleware::class)
 
 
 
