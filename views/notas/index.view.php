@@ -33,7 +33,7 @@
       <div class="label">
         <span class="label-text">Sua nota</span>
       </div>
-      <textarea name="nota" class="textarea textarea-bordered h-24" placeholder="Bio"><?= $notaSelecionada->nota ?></textarea>
+      <textarea name="nota" class="textarea textarea-bordered h-24" placeholder="Escreva aqui..."><?= $notaSelecionada->nota ?></textarea>
       <?php if (isset($validacoes['nota'])) : ?>
         <div class="label text-xs text-error"><?= $validacoes['nota'][0] ?></div>
       <?php endif; ?>
@@ -41,6 +41,10 @@
   </form>
 
   <div class="flex justify-between items-center">
-    <button class="btn btn-error">Deletar</button>
+    <form action="/nota" method="POST">
+      <input type="hidden" name="__method" value="DELETE" />
+      <input type="hidden" name="id" value="<?= $notaSelecionada->id ?>" />
+      <button class="btn btn-error" type="submit">Deletar</button>
+    </form>
     <button class="btn btn-primary" type="submit" form="form-atualizacao">Atualizar</button>
   </div>
