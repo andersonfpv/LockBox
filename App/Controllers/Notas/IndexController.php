@@ -4,15 +4,21 @@ namespace App\Controllers\Notas;
 
 use App\Models\Nota;
 
-class IndexController {
+class IndexController
+{
     public function __invoke()
     {
+       $nota = encrypt('Anderson');
+        dd(
+            $nota,
+            decrypt($nota)
+        );
 
         $notas = Nota::all(
             request()->get('pesquisar', null)
         );
 
-        if(!$notaSelecionada = $this->getNotaSelecionada($notas)) {
+        if (!$notaSelecionada = $this->getNotaSelecionada($notas)) {
             return view('notas/nao-encontrada');
         }
 
@@ -22,9 +28,10 @@ class IndexController {
         ]);
     }
 
-    private function getNotaSelecionada($notas){
-        $id = request()->get('id', (sizeof($notas) > 0 ? $notas[0]->id : null ));
- 
+    private function getNotaSelecionada($notas)
+    {
+        $id = request()->get('id', (sizeof($notas) > 0 ? $notas[0]->id : null));
+
         $filtro = array_filter($notas, fn($n) => $n->id == $id);
 
         return array_pop($filtro);
