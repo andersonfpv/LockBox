@@ -8,12 +8,6 @@ class IndexController
 {
     public function __invoke()
     {
-       $nota = encrypt('Anderson');
-        dd(
-            $nota,
-            decrypt($nota)
-        );
-
         $notas = Nota::all(
             request()->get('pesquisar', null)
         );

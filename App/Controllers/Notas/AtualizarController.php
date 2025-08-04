@@ -26,9 +26,9 @@ class AtualizarController
         }
 
         Nota::update(
+            request()->post('id'),
             request()->post('titulo'),
-            request()->post('nota'),
-            request()->post('id')
+            request()->post('nota')
         );
 
       
