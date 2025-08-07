@@ -1,0 +1,24 @@
+{
+    "name": "a12/lockbox",
+    "autoload": {
+        "psr-4": {
+            "A12\\Lockbox\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anderson"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "App\\": "app/" 
+        },
+
+        "files": [
+            "./Core/functions.php"
+        ]
+    }
+}
