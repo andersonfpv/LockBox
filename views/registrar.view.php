@@ -11,8 +11,8 @@
     <div class="bg-white hero mr-40 min-h-screen text-black">
         <div class="hero-content -mt-20">
             <form method="post" action="/registrar">
-                <?php 
-                    $validacoes = flash()->get('validacoes'); 
+                <?php
+                    $validacoes = flash()->get('validacoes');
                 ?>
                 <div class="card">
                     <div class="card-body">
@@ -23,10 +23,10 @@
                             </div>
                             <input type="text" name="nome" 
                             class="input input-bordered w-full max-w-xs bg-white" 
-                            value="<?=old('nome')?>" />
-                            <?php if(isset($validacoes['nome'])) : ?>
+                            value="<?= old('nome')?>" />
+                            <?php if (isset($validacoes['nome'])) { ?>
                                 <div class="label text-xs text-error"><?= $validacoes['nome'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
                         <label class="form-control">
                             <div class="label">
@@ -34,10 +34,10 @@
                             </div>
                             <input type="email" name="email" 
                             class="input input-bordered w-full max-w-xs bg-white" 
-                            value="<?=old('email')?>"/>
-                            <?php if(isset($validacoes['email'])) : ?>
+                            value="<?= old('email')?>"/>
+                            <?php if (isset($validacoes['email'])) { ?>
                                 <div class="label text-xs text-error"><?= $validacoes['email'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
                         <label class="form-control">
                             <div class="label">
@@ -51,10 +51,10 @@
                             </div>
                             <input type="password" name="senha" 
                             class="input input-bordered w-full max-w-xs bg-white" 
-                            value="<?=old('senha')?>" />
-                            <?php if(isset($validacoes['senha'])) : ?>
+                            value="<?= old('senha')?>" />
+                            <?php if (isset($validacoes['senha'])) { ?>
                                 <div class="label text-xs text-error"><?= $validacoes['senha'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
                         <div class="card-actions">
                             <button class="btn btn-primary btn-block">Registrar</button>

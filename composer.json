@@ -10,15 +10,19 @@
             "name": "Anderson"
         }
     ],
-    "require": {},
+    "require": {
+        "nesbot/carbon": "^3.10"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.24"
+    },
     "autoload": {
         "psr-4": {
             "Core\\": "Core/",
-            "App\\": "app/" 
+            "App\\": "app/"
         },
-
         "files": [
             "./Core/functions.php"
         ]
-    }
+    },
 }

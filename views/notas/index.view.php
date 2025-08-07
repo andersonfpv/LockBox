@@ -1,17 +1,17 @@
 <?php $validacoes = flash()->get('validacoes'); ?>
 
 <div class="bg-base-300 rounded-l-box w-56 flex flex-col divide-y divide-base-100">
-  <?php foreach ($notas as $key => $nota): ?>
+  <?php foreach ($notas as $key => $nota) { ?>
     <a href="/notas?id=<?= $nota->id ?><?= request()->get('pesquisar', '', '&pesquisar=') ?>"
       class="w-full p-2 cursor-pointer hover:bg-base-200 
-      <?php if ($key == 0): ?> rounded-tl-box <?php endif; ?>
-      <?php if ($nota->id == $notaSelecionada->id): ?> bg-base-200 <?php endif; ?>
+      <?php if ($key == 0) { ?> rounded-tl-box <?php } ?>
+      <?php if ($nota->id == $notaSelecionada->id) { ?> bg-base-200 <?php } ?>
       
     ">
       <?= $nota->titulo ?> <br />
-      <span class="text-xs">id: <?= $nota->id ?></span>
+      <span class="text-xs">id: <?= $nota->id ?> || criado: <?= $notaSelecionada->dataCriacao()->locale('pt_BR')->diffForHumans() ?></span>
     </a>
-  <?php endforeach; ?>
+  <?php } ?>
 
 </div>
 <div class="bg-base-200 rounded-r-box w-full p-10 flex flex-col space-y-6">
@@ -24,9 +24,9 @@
         <span class="label-text">Título</span>
       </div>
       <input type="text" name="titulo" placeholder="Type here" class="input input-bordered w-full" value="<?= $notaSelecionada->titulo ?>" />
-      <?php if (isset($validacoes['titulo'])) : ?>
+      <?php if (isset($validacoes['titulo'])) { ?>
         <div class="label text-xs text-error"><?= $validacoes['titulo'][0] ?></div>
-      <?php endif; ?>
+      <?php } ?>
     </label>
 
     <label class="form-control">
@@ -34,13 +34,13 @@
         <span class="label-text">Sua nota</span>
       </div>
       <textarea
-        <?php if (!session()->get('mostrar')): ?>
+        <?php if (! session()->get('mostrar')) { ?>
         disabled
-        <?php endif; ?>
+        <?php } ?>
         name="nota" class="textarea textarea-bordered h-24" placeholder="Escreva aqui..."><?= $notaSelecionada->nota() ?></textarea>
-      <?php if (isset($validacoes['nota'])) : ?>
+      <?php if (isset($validacoes['nota'])) { ?>
         <div class="label text-xs text-error"><?= $validacoes['nota'][0] ?></div>
-      <?php endif; ?>
+      <?php } ?>
     </label>
   </form>
 

@@ -2,8 +2,8 @@
 
 namespace Core;
 
-class Validacao {
-
+class Validacao
+{
     public $validacoes = [];
 
     public static function validar($regras, $dados)
@@ -11,17 +11,16 @@ class Validacao {
 
         $validacao = new self;
 
-        foreach($regras as $campo => $regrasDoCampo) {
+        foreach ($regras as $campo => $regrasDoCampo) {
 
-            foreach($regrasDoCampo as $regra) {
+            foreach ($regrasDoCampo as $regra) {
 
                 $valorDoCampo = $dados[$campo];
-                
 
                 if ($regra == 'confirmed') {
 
                     $validacao->$regra($campo, $valorDoCampo, $dados["{$campo}_confirmacao"]);
-                        
+
                 } elseif (str_contains($regra, ':')) {
 
                     $temp = explode(':', $regra);
@@ -32,9 +31,7 @@ class Validacao {
 
                     $validacao->$regra($regraAr, $campo, $valorDoCampo);
 
-                }
-                
-                else {
+                } else {
 
                     $validacao->$regra($campo, $valorDoCampo);
 
@@ -48,12 +45,12 @@ class Validacao {
 
     }
 
-     private function unique($tabela, $campo, $valor)
+    private function unique($tabela, $campo, $valor)
     {
 
         if (strlen($valor) == 0) {
 
-            return ;
+            return;
 
         }
 
@@ -80,7 +77,7 @@ class Validacao {
         if (strlen($valor) == 0) {
 
             $this->addError($campo, "O $campo é obrigatório.");
-    
+
         }
 
     }
@@ -88,10 +85,10 @@ class Validacao {
     private function email($campo, $valor)
     {
 
-        if (!filter_var($valor, FILTER_VALIDATE_EMAIL)) {
+        if (! filter_var($valor, FILTER_VALIDATE_EMAIL)) {
 
             $this->addError($campo, "O $campo é inválido.");
-    
+
         }
 
     }
@@ -102,12 +99,13 @@ class Validacao {
         if ($valor != $valorDeConfirmacao) {
 
             $this->addError($campo, "O $campo de confirmação está diferente.");
-    
+
         }
 
     }
 
-    private function min($min, $campo, $valor) {
+    private function min($min, $campo, $valor)
+    {
 
         if (strlen($valor) <= $min) {
 
@@ -117,7 +115,8 @@ class Validacao {
 
     }
 
-    private function max($max, $campo, $valor) {
+    private function max($max, $campo, $valor)
+    {
 
         if (strlen($valor) > $max) {
 
@@ -133,12 +132,13 @@ class Validacao {
         if (! strpbrk($valor, "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~")) {
 
             $this->addError($campo, "A $campo precisa um caractere especial nela.");
-    
+
         }
 
     }
 
-    private function addError($campo, $erro) {
+    private function addError($campo, $erro)
+    {
         $this->validacoes[$campo][] = $erro;
     }
 
@@ -149,14 +149,13 @@ class Validacao {
 
         if ($nomeCustomizado) {
 
-            $chave .= '_' . $nomeCustomizado;
+            $chave .= '_'.$nomeCustomizado;
 
         }
 
         flash()->push($chave, $this->validacoes);
 
-        return sizeof($this->validacoes) > 0;
+        return count($this->validacoes) > 0;
 
     }
-
 }

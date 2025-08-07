@@ -4,27 +4,29 @@ namespace Core;
 
 use PDO;
 
-class Database {
-
+class Database
+{
     private $db;
 
-    public function __construct($config) {
+    public function __construct($config)
+    {
 
         $this->db = new PDO($this->getDsn($config));
 
     }
 
-    private function getDsn($config) {
+    private function getDsn($config)
+    {
 
         $driver = $config['driver'];
 
         unset($config['driver']);
 
-        $dsn = $driver . ':' . http_build_query($config, '', ';');
+        $dsn = $driver.':'.http_build_query($config, '', ';');
 
         if ($driver == 'sqlite') {
 
-            $dsn = $driver . ':' . $config['database'];
+            $dsn = $driver.':'.$config['database'];
 
         }
 
@@ -32,7 +34,8 @@ class Database {
 
     }
 
-    public function query($query, $class = null, $params = []) {
+    public function query($query, $class = null, $params = [])
+    {
 
         $prepare = $this->db->prepare($query);
 
@@ -47,5 +50,4 @@ class Database {
         return $prepare;
 
     }
-
 }

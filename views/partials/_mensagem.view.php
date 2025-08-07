@@ -1,4 +1,4 @@
-<?php if ($success = flash()->get('mensagem')): ?>
+<?php if ($success = flash()->get('mensagem')) { ?>
                             <div role="alert" class="alert shadow-lg">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -16,4 +16,4 @@
                                     <div class="text-xs"><?= $success ?> </div>
                                 </div>
                             </div>
-                        <?php endif; ?>
+                        <?php } ?>

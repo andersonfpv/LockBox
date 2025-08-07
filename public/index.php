@@ -2,9 +2,7 @@
 
 require '../vendor/autoload.php';
 
-
 session_start();
-
 
 // $config = require '../config.php';
 

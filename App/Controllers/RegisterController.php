@@ -2,9 +2,8 @@
 
 namespace App\Controllers;
 
-use Core\Validacao;
-
 use Core\Database;
+use Core\Validacao;
 
 class RegisterController
 {
@@ -13,14 +12,13 @@ class RegisterController
         return view('registrar', template: 'guest');
     }
 
-
     public function register()
     {
         $validacao = Validacao::validar([
 
             'nome' => ['required'],
             'email' => ['required', 'email', 'confirmed', 'unique:usuarios'],
-            'senha' => ['required', 'min:8', 'max:30', 'strong']
+            'senha' => ['required', 'min:8', 'max:30', 'strong'],
 
         ], request()->all());
 
@@ -31,15 +29,14 @@ class RegisterController
 
         $database = new Database(config('database'));
 
-
         $database->query(
 
-            query: "insert into usuarios (nome, email, senha) values (:nome, :email, :senha)",
+            query: 'insert into usuarios (nome, email, senha) values (:nome, :email, :senha)',
 
             params: [
                 'nome' => request()->post('nome'),
                 'email' => request()->post('email'),
-                'senha' => password_hash(request()->post('senha'), PASSWORD_BCRYPT)
+                'senha' => password_hash(request()->post('senha'), PASSWORD_BCRYPT),
             ]
 
         );
